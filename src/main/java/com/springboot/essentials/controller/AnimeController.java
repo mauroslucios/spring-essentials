@@ -22,7 +22,7 @@ public class AnimeController {
     @Autowired
     private final DateUtil dateUtil;
 
-    @GetMapping("/anime")
+    @GetMapping("/animes")
     public List<Anime> list(){
         log.info(dateUtil.formatLocalDateTimeToDatabaseStyle(LocalDateTime.now()));
         return List.of(new Anime("Goku"), new Anime("Hakusho"));
