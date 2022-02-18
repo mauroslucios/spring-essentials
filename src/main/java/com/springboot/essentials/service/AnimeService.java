@@ -20,4 +20,12 @@ public class AnimeService {
         List<Anime> animes = animeRepository.findAll();
         return AnimeDTO.converter(animes);
     }
+
+    public Anime findById(Long id){
+        return animeRepository.findById(id).get();
+    }
+
+    public Anime insertAnime(Anime anime){
+        return animeRepository.save(anime);
+    }
 }
