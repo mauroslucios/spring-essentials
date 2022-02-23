@@ -25,7 +25,20 @@ public class AnimeService {
         return animeRepository.findById(id).get();
     }
 
-    public Anime insertAnime(Anime anime){
-        return animeRepository.save(anime);
+    public Anime insertAnime(AnimeDTO animeDTO){
+        return animeRepository.save(Anime.builder().name(animeDTO.getName()).build());
+    }
+
+    public void deleteById(Long id){
+        animeRepository.deleteById(id);
+    }
+
+    public void putAnimeById(AnimeDTO animeDTO){
+        Anime savedAnime = findById(animeDTO.getId());
+        Anime anime = Anime.builder()
+                .id(savedAnime.getId())
+                .name(animeDTO.getName())
+                .build();
+         animeRepository.save(anime);
     }
 }
